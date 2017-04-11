@@ -1,0 +1,28 @@
+<a href="/movies">Go Back to All Movies</a>
+<h1>Let's Add a Movie!</h1>
+
+<form method="POST" action="/movies">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input name="title" type="text" class="form-control" placeholder="Title">
+  </div>
+  <div class="form-group">
+    <label for="director">Director</label>
+    <input name="director" type="text" class="form-control" placeholder="Director">
+  </div>
+  <div class="form-group">
+    <label for="year">Year</label>
+    <input name="year" type="number" class="form-control" placeholder="Year" min="1900" max="2099" step="1">
+  </div>
+  <div class="form-group">
+    <label for="my-rating">My Rating</label>
+    <input name="my-rating" type="number" class="form-control" placeholder="3" default="3" min="1" max="5">
+  </div>
+  <div class="form-group">
+    <label for="poster-url">Poster URL</label>
+    <input name="poster-url" type="text" class="form-control" placeholder="Poster URL">
+  </div>
+  <div class="form-group">
+    <input id="submit" type="submit">
+  </div>
+</form>

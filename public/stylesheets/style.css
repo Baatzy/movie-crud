@@ -6,3 +6,8 @@ body {
 a {
   color: #00B7FF;
 }
+
+.spacer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

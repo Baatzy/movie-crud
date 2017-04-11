@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Here's that movie!</h1>
+  <a href="/">Go back home?</a>
+  <div class="row spacer">
+    <div class="col-md-2">
+      <img src="{{ movie.poster_url }}"
+        alt="{{ movie.title }}"
+        class="poster" height="180">
+    </div>
+    <div class="col-md-6">
+      <h2>
+        <h1>{{ movie.title }}</h1>
+      </h2>
+      <p>Director: {{ movie.director }}</p>
+      <p>Year: {{ movie.year }}</p>
+      <p>My Rating: {{ movie.my_rating }}</p>
+    </div>
+  </div>
+</div>

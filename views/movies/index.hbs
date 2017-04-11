@@ -1,4 +1,22 @@
-<h1>{{title}}</h1>
-<p>Ready to Index Some Movies?</p>
-<a href='/'>Go back home</p>
-{{ movies }}
+<div class="container">
+  <h1>Movies Index Page</h1>
+  <a href="/">Go Back Home</a><br>
+  <a href="/movies/new">Add New Movie</a>
+  {{#each movies}}
+  <div class="row spacer">
+    <div class="col-md-2">
+      <img src="{{ this.poster_url }}"
+        alt="{{ this.title }}"
+        class="poster" height="180">
+    </div>
+    <div class="col-md-6">
+      <h2>
+        <a href="/movies/{{ this.id }}">{{ this.title }}</a>
+      </h2>
+      <p>Director: {{ this.director }}</p>
+      <p>Year: {{ this.year }}</p>
+      <p>My Rating: {{ this.my_rating }}</p>
+    </div>
+  </div>
+  {{/each}}
+</div>
