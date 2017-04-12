@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Movies Index Page</h1>
   <a href="/">Go Back Home</a><br>
-  <a href="/movies/new">Add New Movie</a>
+  <a href="/movies/new">Add New Movie</a><br>
   {{#each movies}}
   <div class="row spacer">
     <div class="col-md-2">
@@ -17,6 +17,7 @@
       <p>Year: {{ this.year }}</p>
       <p>My Rating: {{ this.my_rating }}</p>
     </div>
+    <a href="/movies/{{ this.id }}/edit">Edit This Movie</a>
   </div>
   {{/each}}
 </div>
