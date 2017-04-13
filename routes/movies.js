@@ -49,13 +49,19 @@ router.post('/', (req, res, next) => {
     my_rating: req.body['my-rating'],
     poster_url: req.body['poster-url']
   }
+  // Validation to make sure the year is after 1900
+  let year = parseInt(req.body.year)
+  if (Number.isNaN(year) || year <= 1900) {
+    res.render('movies/new', { error: 'Year must be after 1900 dude!', addedMovie })
+  } else {
   // Making an async request to insert addedMovie, then...
   db('movies').insert(addedMovie, '*').then(newMovie => {
     // Grabbing the newMovie ID
     let id = newMovie[0].id
     //Redirect the client to the new movie review when the new movie form is submitted
     res.redirect(`/movies/${id}`)
-  })
+    })
+  }
 })
 
 // PUT route to edit existing movie

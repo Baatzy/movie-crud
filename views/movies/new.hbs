@@ -1,6 +1,12 @@
 <a href="/movies">Go Back to All Movies</a>
 <h1>Let's Add a Movie!</h1>
 
+{{#if error}}
+<div class="alert alert-danger">
+  {{ error }}
+</div>
+{{/if}}
+
 <form method="POST" action="/movies" class="well">
   <div class="form-group">
     <label for="title">Title</label>
