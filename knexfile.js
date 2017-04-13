@@ -15,7 +15,7 @@ module.exports = {
   },
   production: {
     client: 'pg',
-    connection: process.env.HEROKU_POSTGRESQL_IVORY_URL,
+    connection: process.env.DATABASE_URL,
     migrations: {
       directory: path.join(__dirname, 'db', 'migrations')
     },
