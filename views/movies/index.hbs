@@ -18,6 +18,9 @@
       <p>My Rating: {{ this.my_rating }}</p>
     </div>
     <a href="/movies/{{ this.id }}/edit">Edit This Movie</a>
+    <form action="/movies/{{ this.id }}?_method=DELETE" method="POST">
+      <input type="submit" name="delete" value="Delete Movie">
+    </form>
   </div>
   {{/each}}
 </div>

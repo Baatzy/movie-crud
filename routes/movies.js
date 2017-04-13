@@ -78,7 +78,11 @@ router.put('/:id', (req, res, next) => {
   })
 })
 
-
-
+router.delete('/:id', (req, res, next) => {
+  let id = req.params.id
+  db('movies').del().where({ id: id }).then(() => {
+    res.redirect('/movies')
+  })
+})
 
 module.exports = router
