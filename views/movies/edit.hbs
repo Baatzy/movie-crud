@@ -1,7 +1,8 @@
 <a href="/movies">Go Back to All Movies</a>
-<h1>Edit {{ movie.title }} a Movie!</h1>
+<h1>Edit Rating for: {{ movie.title }}!</h1>
 
-<form method="POST" action="/movies">
+<!-- Used method override to make this form PUT, they normally can only POST and GET, e.g. "...?_method=PUT" -->
+<form method="POST" action="/movies/{{ movie.id }}?_method=PUT" class="well">
   <div class="form-group">
     <label for="title">Title</label>
     <input name="title" type="text" class="form-control" value="{{ movie.title }}">

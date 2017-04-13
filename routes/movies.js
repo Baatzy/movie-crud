@@ -17,17 +17,6 @@ router.get('/new', (req, res, next) => {
   res.render('movies/new')
 })
 
-// PUT route to edit existing movie
-router.get('/:id/edit', (req, res, next) => {
-  // Grabbing req ID
-  let id = req.params.id
-  // Grab all movies via an async request where the ID matches and take the first element of the result array, then...
-  db('movies').select('*').where({ id: id }).first().then(movie => {
-    // Pass the movie object to Handlebars so it can render template
-    res.render('movies/edit', { movie: movie })
-  })
-})
-
 // GET route for a movie by ID
 router.get('/:id', (req, res, next) => {
   // Grabbing req ID
@@ -36,6 +25,17 @@ router.get('/:id', (req, res, next) => {
   db('movies').select('*').where({ id: id }).first().then(movie => {
     // Pass the movie object to Handlebars so it can render template
     res.render('movies/details', { movie: movie })
+  })
+})
+
+// GET route to eventually edit existing movie
+router.get('/:id/edit', (req, res, next) => {
+  // Grabbing req ID
+  let id = req.params.id
+  // Grab all movies via an async request where the ID matches and take the first element of the result array, then...
+  db('movies').select('*').where({ id: id }).first().then(movie => {
+    // Pass the movie object to Handlebars so it can render form with movie info
+    res.render('movies/edit', { movie: movie })
   })
 })
 
@@ -57,5 +57,28 @@ router.post('/', (req, res, next) => {
     res.redirect(`/movies/${id}`)
   })
 })
+
+// PUT route to edit existing movie
+router.put('/:id', (req, res, next) => {
+  let id = req.params.id
+  // Taking the req.body from the form URL and assigning the form input field name data to keys in a new addedMovie object
+  let movie = {
+    title: req.body.title,
+    director: req.body.director,
+    year: req.body.year,
+    my_rating: req.body['my-rating'],
+    poster_url: req.body['poster-url']
+  }
+  // Making an async request to insert updatedMovie, then...
+  db('movies').update(movie, '*').where({ id: id }).then(updatedMovie => {
+    // Grabbing the updatedMovie ID
+    let id = updatedMovie[0].id
+    //Redirect the client to the new movie review when the new movie form is submitted
+    res.redirect(`/movies/${id}`)
+  })
+})
+
+
+
 
 module.exports = router
